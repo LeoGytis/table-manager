@@ -1,4 +1,4 @@
-export interface User {
+export interface UserProps {
   id: number;
   firstName: string;
   lastName: string;
@@ -8,7 +8,7 @@ export interface User {
   endDate: Date;
 }
 
-export const usersData: User[] = [
+export const usersData: UserProps[] = [
   {
     id: 1,
     firstName: "John",

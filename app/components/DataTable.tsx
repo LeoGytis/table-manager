@@ -86,7 +86,7 @@ const DataTable = () => {
   return (
     <div className="flex gap-4 my-5">
       <Filters filters={filters} onFilterChange={handleFilterChange} />
-      <div className="flex flex-col gap-4 mb-3">
+      <div className="w-full flex flex-col gap-4 mb-3">
         <ColumnSettings
           columnVisibility={columnVisibility}
           setColumnVisibility={setColumnVisibility}
@@ -96,24 +96,12 @@ const DataTable = () => {
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
-                  const column = columnsData.find(
-                    (col) => col.accessorKey === header.id
-                  );
                   return (
                     <th key={header.id} className="p-2 border border-gray-300">
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
                       )}
-                      <div className="tooltip">
-                        <span className="tooltiptext">
-                          <strong>Name:</strong> {column?.header} <br />
-                          <strong>accessorKey:</strong> {column?.accessorKey}
-                          <br />
-                          <strong>Type:</strong> {column?.dataType} <br />
-                          <strong>Description:</strong> {column?.description}
-                        </span>
-                      </div>
                     </th>
                   );
                 })}

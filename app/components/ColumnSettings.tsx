@@ -1,8 +1,11 @@
-import { User } from "../usersData";
+import { columnsData } from "../columnsData";
+import { UserProps } from "../usersData";
 
 interface ColumnSettingsProps {
-  columnVisibility: Record<keyof User, boolean>;
-  setColumnVisibility: (newVisibility: Record<keyof User, boolean>) => void;
+  columnVisibility: Record<keyof UserProps, boolean>;
+  setColumnVisibility: (
+    newVisibility: Record<keyof UserProps, boolean>
+  ) => void;
 }
 
 export const ColumnSettings = ({
@@ -10,14 +13,14 @@ export const ColumnSettings = ({
   setColumnVisibility,
 }: ColumnSettingsProps) => {
   return (
-    <div className="border p-4">
-      <h3>Column Settings</h3>
-      {Object.keys(columnVisibility).map((columnKey) => {
-        const key = columnKey as keyof User;
-
-        return (
-          <div key={key}>
-            <label>
+    <div className="p-4">
+      <h2 className="text-lg font-bold mb-2">Column Settings</h2>
+      <div className="grid grid-cols-3 gap-4">
+        {Object.keys(columnVisibility).map((columnKey) => {
+          const key = columnKey as keyof UserProps;
+          const column = columnsData.find((col) => col.accessorKey === key);
+          return (
+            <div key={key} className="flex gap-4 border pl-4 py-2">
               <input
                 type="checkbox"
                 checked={columnVisibility[key]}
@@ -28,11 +31,20 @@ export const ColumnSettings = ({
                   });
                 }}
               />
-              {key}
-            </label>
-          </div>
-        );
-      })}
+              {column && (
+                <div>
+                  <span>
+                    <strong>Name:</strong> {column.header} <br />
+                    <strong>accessorKey:</strong> {column.accessorKey} <br />
+                    <strong>Type:</strong> {column.dataType} <br />
+                    <strong>Description:</strong> {column.description}
+                  </span>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

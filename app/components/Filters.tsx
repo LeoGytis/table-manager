@@ -34,7 +34,7 @@ const Filters = ({ filters, onFilterChange }: FiltersProps) => {
   };
 
   return (
-    <div className="filters">
+    <div className="w-1/5">
       <div>
         <label>First Name:</label>
         <input
