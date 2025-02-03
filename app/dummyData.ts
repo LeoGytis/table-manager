@@ -4,6 +4,8 @@ export interface User {
   lastName: string;
   email: string;
   age: number;
+  startDate: Date;
+  endDate: Date;
 }
 
 export const dummyData: User[] = [
@@ -13,6 +15,8 @@ export const dummyData: User[] = [
     lastName: "Doe",
     email: "john.doe@example.com",
     age: 28,
+    startDate: new Date("2020-01-01"),
+    endDate: new Date("2023-01-01"),
   },
   {
     id: 2,
@@ -20,6 +24,8 @@ export const dummyData: User[] = [
     lastName: "Smith",
     email: "jane.smith@example.com",
     age: 34,
+    startDate: new Date("2018-05-15"),
+    endDate: new Date("2022-12-30"),
   },
   {
     id: 3,
@@ -27,6 +33,8 @@ export const dummyData: User[] = [
     lastName: "Johnson",
     email: "alice.johnson@example.com",
     age: 25,
+    startDate: new Date("2021-09-23"),
+    endDate: new Date("2024-09-23"),
   },
   {
     id: 4,
@@ -34,5 +42,7 @@ export const dummyData: User[] = [
     lastName: "Brown",
     email: "bob.brown@example.com",
     age: 40,
+    startDate: new Date("2015-06-10"),
+    endDate: new Date("2023-11-20"),
   },
 ];
