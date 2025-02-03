@@ -1,65 +1,73 @@
-import React, { useState } from "react";
-
 interface FiltersProps {
-  onFilterChange: (filters: Record<string, string>) => void;
+  filters: Record<string, string | number | number[]>;
+  onFilterChange: (filters: Record<string, string | number | number[]>) => void;
 }
 
-const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
-  const [filters, setFilters] = useState<Record<string, string>>({
-    firstName: "",
-    lastName: "",
-    email: "",
-  });
+const Filters = ({ filters, onFilterChange }: FiltersProps) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: string
+  ) => {
+    const newFilters = { ...filters, [field]: e.target.value };
+    onFilterChange(newFilters);
+  };
 
-  const handleFilterChange = (field: string, value: string) => {
-    const newFilters = { ...filters, [field]: value };
-    setFilters(newFilters);
+  const handleRangeChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: string,
+    index: number
+  ) => {
+    const newRange = [...(filters[field] as number[])];
+    newRange[index] = parseInt(e.target.value, 10);
+    const newFilters = { ...filters, [field]: newRange };
     onFilterChange(newFilters);
   };
 
   return (
-    <div className="w-1/6 p-4 bg-gray-100 border">
-      <h3 className="text-xl font-semibold mb-4">Filters</h3>
-
-      <div className="mb-3">
-        <label htmlFor="firstName" className="block text-sm font-medium">
-          First Name
-        </label>
+    <div className="filters">
+      <div>
+        <label>First Name:</label>
         <input
-          id="firstName"
           type="text"
-          value={filters.firstName}
-          onChange={(e) => handleFilterChange("firstName", e.target.value)}
-          placeholder="Search by First Name"
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+          value={filters.firstName as string}
+          onChange={(e) => handleInputChange(e, "firstName")}
+          className="mt-1 p-2 w-full border rounded"
         />
       </div>
 
-      <div className="mb-3">
-        <label htmlFor="lastName" className="block text-sm font-medium">
-          Last Name
-        </label>
+      <div>
+        <label>Last Name:</label>
         <input
-          id="lastName"
           type="text"
-          value={filters.lastName}
-          onChange={(e) => handleFilterChange("lastName", e.target.value)}
-          placeholder="Search by Last Name"
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+          value={filters.lastName as string}
+          onChange={(e) => handleInputChange(e, "lastName")}
+          className="mt-1 p-2 w-full border rounded"
         />
       </div>
 
-      <div className="mb-3">
-        <label htmlFor="email" className="block text-sm font-medium">
-          Email
-        </label>
+      <div>
+        <label>Email:</label>
         <input
-          id="email"
           type="text"
-          value={filters.email}
-          onChange={(e) => handleFilterChange("email", e.target.value)}
-          placeholder="Search by Email"
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+          value={filters.email as string}
+          onChange={(e) => handleInputChange(e, "email")}
+          className="mt-1 p-2 w-full border rounded"
+        />
+      </div>
+
+      <div>
+        <label>Age Range:</label>
+        <input
+          type="number"
+          value={(filters.age as number[])[0].toString()}
+          onChange={(e) => handleRangeChange(e, "age", 0)}
+          className="mt-1 p-2 w-full border rounded"
+        />
+        <input
+          type="number"
+          value={(filters.age as number[])[1].toString()}
+          onChange={(e) => handleRangeChange(e, "age", 1)}
+          className="mt-1 p-2 w-full border rounded"
         />
       </div>
     </div>

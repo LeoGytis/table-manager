@@ -23,22 +23,32 @@ const DataTable = () => {
     endDate: true,
   });
 
-  const [filters, setFilters] = useState<Record<string, string>>({
+  const [filters, setFilters] = useState<
+    Record<string, string | number | number[]>
+  >({
     firstName: "",
     lastName: "",
     email: "",
+    age: [0, 100], // default range for age
   });
 
-  // Apply filters to data
   const filteredData = useMemo(() => {
     return usersData.filter((user) => {
-      return (
-        user.firstName
-          .toLowerCase()
-          .includes(filters.firstName.toLowerCase()) &&
-        user.lastName.toLowerCase().includes(filters.lastName.toLowerCase()) &&
-        user.email.toLowerCase().includes(filters.email.toLowerCase())
-      );
+      const firstNameMatch = user.firstName
+        .toLowerCase()
+        .includes((filters.firstName as string).toLowerCase());
+      const lastNameMatch = user.lastName
+        .toLowerCase()
+        .includes((filters.lastName as string).toLowerCase());
+      const emailMatch = user.email
+        .toLowerCase()
+        .includes((filters.email as string).toLowerCase());
+
+      const ageMatch =
+        user.age >= (filters.age as number[])[0] &&
+        user.age <= (filters.age as number[])[1];
+
+      return firstNameMatch && lastNameMatch && emailMatch && ageMatch;
     });
   }, [filters]);
 
@@ -50,9 +60,15 @@ const DataTable = () => {
     getCoreRowModel: getCoreRowModel(),
   });
 
+  const handleFilterChange = (
+    newFilters: Record<string, string | number | number[]>
+  ) => {
+    setFilters(newFilters);
+  };
+
   return (
-    <div className="flex gap-4  my-5">
-      <Filters onFilterChange={setFilters} />
+    <div className="flex gap-4 my-5">
+      <Filters filters={filters} onFilterChange={handleFilterChange} />
       <div className="flex flex-col gap-4 mb-3">
         <ColumnSettings
           columnVisibility={columnVisibility}
@@ -92,7 +108,6 @@ const DataTable = () => {
             {table.getRowModel().rows.map((row) => (
               <tr key={row.id}>
                 {row.getVisibleCells().map((cell) => {
-                  // Check if the column data type is Date and format accordingly
                   const column = columnsData.find(
                     (col) => col.accessorKey === cell.column.id
                   );
