@@ -17,6 +17,8 @@ const DataTable = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
+  const [showColumnSettings, setShowColumnSettings] = useState<boolean>(false);
+
   const [showColumnInfo, setShowColumnInfo] = useState<boolean>(false);
   const [columnVisibility, setColumnVisibility] = useState<
     Record<string, boolean>
@@ -86,12 +88,23 @@ const DataTable = () => {
     <div className="flex gap-4 my-5">
       <Filters filters={filters} onFilterChange={handleFilterChange} />
       <div className="w-full flex flex-col gap-4 mb-3">
-        <ColumnSettings
-          columnVisibility={columnVisibility}
-          setColumnVisibility={setColumnVisibility}
-          showColumnInfo={showColumnInfo}
-          setShowColumnInfo={setShowColumnInfo}
-        />
+        <div className="bg-blue text-white border border-green rounded p-4">
+          <div
+            onClick={() => setShowColumnSettings(!showColumnSettings)}
+            className="w-fit ml-auto text-end text-lg font-semibold cursor-pointer border border-green rounded p-2"
+          >
+            Column Settings
+          </div>
+          {showColumnSettings && (
+            <ColumnSettings
+              columnVisibility={columnVisibility}
+              setColumnVisibility={setColumnVisibility}
+              showColumnInfo={showColumnInfo}
+              setShowColumnInfo={setShowColumnInfo}
+            />
+          )}
+        </div>
+
         {isLoading ? (
           <p className="text-center">Loading data...</p>
         ) : (
