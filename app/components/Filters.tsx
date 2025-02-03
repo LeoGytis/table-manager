@@ -34,7 +34,9 @@ const Filters = ({ filters, onFilterChange }: FiltersProps) => {
   };
 
   return (
-    <div className="w-1/5">
+    <div className="w-1/5 flex flex-col gap-6 bg-blue text-white border border-green rounded p-4">
+      <h3 className="text-xl font-semibold">Fitler by:</h3>
+
       <div>
         <label>First Name:</label>
         <input
@@ -67,18 +69,20 @@ const Filters = ({ filters, onFilterChange }: FiltersProps) => {
 
       <div>
         <label>Age Range:</label>
-        <input
-          type="number"
-          value={(filters.age as number[])[0].toString()}
-          onChange={(e) => handleRangeChange(e, "age", 0)}
-          className="mt-1 p-2 w-full border rounded"
-        />
-        <input
-          type="number"
-          value={(filters.age as number[])[1].toString()}
-          onChange={(e) => handleRangeChange(e, "age", 1)}
-          className="mt-1 p-2 w-full border rounded"
-        />
+        <div className="flex gap-6">
+          <input
+            type="number"
+            value={(filters.age as number[])[0].toString()}
+            onChange={(e) => handleRangeChange(e, "age", 0)}
+            className="mt-1 p-2 w-full border rounded"
+          />
+          <input
+            type="number"
+            value={(filters.age as number[])[1].toString()}
+            onChange={(e) => handleRangeChange(e, "age", 1)}
+            className="mt-1 p-2 w-full border rounded"
+          />
+        </div>
       </div>
 
       {/* Start Date Filter */}

@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="mx-20">
+      <div className="mx-8">
         <DataTable />
       </div>
     </QueryClientProvider>
