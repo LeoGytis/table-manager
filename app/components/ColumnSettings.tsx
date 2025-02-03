@@ -6,14 +6,18 @@ interface ColumnSettingsProps {
   setColumnVisibility: (
     newVisibility: Record<keyof UserProps, boolean>
   ) => void;
+  showColumnInfo: boolean;
+  setShowColumnInfo: (value: boolean) => void;
 }
 
 export const ColumnSettings = ({
   columnVisibility,
   setColumnVisibility,
+  showColumnInfo,
+  setShowColumnInfo,
 }: ColumnSettingsProps) => {
   return (
-    <div className="p-4">
+    <div className="flex flex-col gap-2 p-4">
       <h2 className="text-lg font-bold mb-2">Column Settings</h2>
       <div className="grid grid-cols-3 gap-4">
         {Object.keys(columnVisibility).map((columnKey) => {
@@ -44,6 +48,14 @@ export const ColumnSettings = ({
             </div>
           );
         })}
+      </div>
+      <div className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          checked={showColumnInfo}
+          onChange={(e) => setShowColumnInfo(e.target.checked)}
+        />
+        <span>Show detailed column information</span>
       </div>
     </div>
   );

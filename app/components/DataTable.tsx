@@ -13,6 +13,7 @@ import { ColumnSettings } from "./ColumnSettings";
 import Filters from "./Filters";
 
 const DataTable = () => {
+  const [showColumnInfo, setShowColumnInfo] = useState<boolean>(false);
   const [columnVisibility, setColumnVisibility] = useState<
     Record<string, boolean>
   >({
@@ -61,7 +62,9 @@ const DataTable = () => {
         <ColumnSettings
           columnVisibility={columnVisibility}
           setColumnVisibility={setColumnVisibility}
-        />{" "}
+          showColumnInfo={showColumnInfo}
+          setShowColumnInfo={setShowColumnInfo}
+        />
         {isLoading ? (
           <p className="text-center">Loading data...</p>
         ) : (
@@ -70,6 +73,9 @@ const DataTable = () => {
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
+                    const column = columnsData.find(
+                      (col) => col.accessorKey === header.column.id
+                    );
                     return (
                       <th
                         key={header.id}
@@ -78,6 +84,21 @@ const DataTable = () => {
                         {flexRender(
                           header.column.columnDef.header,
                           header.getContext()
+                        )}
+
+                        {column && showColumnInfo && (
+                          <div className="text-start text-sm font-light">
+                            <span className="font-semibold">accessorKey:</span>{" "}
+                            {column.accessorKey} <br />
+                            <span className="font-semibold">
+                              Column Type:
+                            </span>{" "}
+                            {column.dataType} <br />
+                            <span className="font-semibold">
+                              Description:
+                            </span>{" "}
+                            {column.description}
+                          </div>
                         )}
                       </th>
                     );
