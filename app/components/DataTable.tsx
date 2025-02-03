@@ -7,8 +7,8 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
-import { columnsData, DataType } from "../columnsData";
-import mockFetchUsers from "../data/mockUsers";
+import { columnsData, DataType } from "../data/columnsData";
+import mockFetchUsers from "../data/mockFetchUsers";
 import { ColumnSettings } from "./ColumnSettings";
 import Filters from "./Filters";
 
@@ -39,41 +39,6 @@ const DataTable = () => {
     queryKey: ["users", filters],
     queryFn: () => mockFetchUsers(filters),
   });
-
-  //   const filteredData = useMemo(() => {
-  //     return usersData.filter((user) => {
-  //       const firstNameMatch = user.firstName
-  //         .toLowerCase()
-  //         .includes((filters.firstName as string).toLowerCase());
-  //       const lastNameMatch = user.lastName
-  //         .toLowerCase()
-  //         .includes((filters.lastName as string).toLowerCase());
-  //       const emailMatch = user.email
-  //         .toLowerCase()
-  //         .includes((filters.email as string).toLowerCase());
-
-  //       const ageMatch =
-  //         Array.isArray(filters.age) &&
-  //         user.age >= (filters.age as number[])[0] &&
-  //         user.age <= (filters.age as number[])[1];
-
-  //       const startDateMatch =
-  //         !filters.startDate ||
-  //         new Date(user.startDate) >= new Date(filters.startDate as string);
-  //       const endDateMatch =
-  //         !filters.endDate ||
-  //         new Date(user.endDate) <= new Date(filters.endDate as string);
-
-  //       return (
-  //         firstNameMatch &&
-  //         lastNameMatch &&
-  //         emailMatch &&
-  //         ageMatch &&
-  //         startDateMatch &&
-  //         endDateMatch
-  //       );
-  //     });
-  //   }, [filters]);
 
   const table = useReactTable({
     data: users,

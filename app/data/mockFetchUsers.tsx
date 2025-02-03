@@ -1,4 +1,4 @@
-import { usersData } from "../usersData";
+import { usersData } from "./usersData";
 
 const mockFetchUsers = (
   filters: Record<string, string | number | number[]>

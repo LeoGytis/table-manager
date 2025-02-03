@@ -1,5 +1,5 @@
-import { columnsData } from "../columnsData";
-import { UserProps } from "../usersData";
+import { columnsData } from "../data/columnsData";
+import { UserProps } from "../data/usersData";
 
 interface ColumnSettingsProps {
   columnVisibility: Record<keyof UserProps, boolean>;
