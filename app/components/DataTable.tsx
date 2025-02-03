@@ -6,7 +6,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
-import { columnsData } from "../columnsData";
+import { columnsData, DataType } from "../columnsData";
 import { usersData } from "../usersData";
 import { ColumnSettings } from "./ColumnSettings";
 import Filters from "./Filters";
@@ -29,7 +29,9 @@ const DataTable = () => {
     firstName: "",
     lastName: "",
     email: "",
-    age: [0, 100], // default range for age
+    age: [0, 100],
+    startDate: "",
+    endDate: "",
   });
 
   const filteredData = useMemo(() => {
@@ -45,10 +47,25 @@ const DataTable = () => {
         .includes((filters.email as string).toLowerCase());
 
       const ageMatch =
+        Array.isArray(filters.age) &&
         user.age >= (filters.age as number[])[0] &&
         user.age <= (filters.age as number[])[1];
 
-      return firstNameMatch && lastNameMatch && emailMatch && ageMatch;
+      const startDateMatch =
+        !filters.startDate ||
+        new Date(user.startDate) >= new Date(filters.startDate as string);
+      const endDateMatch =
+        !filters.endDate ||
+        new Date(user.endDate) <= new Date(filters.endDate as string);
+
+      return (
+        firstNameMatch &&
+        lastNameMatch &&
+        emailMatch &&
+        ageMatch &&
+        startDateMatch &&
+        endDateMatch
+      );
     });
   }, [filters]);
 
@@ -116,7 +133,7 @@ const DataTable = () => {
                   let formattedCellValue: any = cellValue;
 
                   if (
-                    column?.dataType === "date" &&
+                    column?.dataType === DataType.DATE &&
                     cellValue instanceof Date
                   ) {
                     formattedCellValue = formatDate(cellValue);
