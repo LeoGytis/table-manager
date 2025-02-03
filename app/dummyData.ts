@@ -1,45 +1,38 @@
-export interface DataRow {
+interface User {
   id: number;
-  name: string;
-  age: number;
+  firstName: string;
+  lastName: string;
   email: string;
-  createdAt: string;
+  age: number;
 }
 
-export const dummyData: DataRow[] = [
+export const dummyData: User[] = [
   {
     id: 1,
-    name: "Alice Johnson",
+    firstName: "John",
+    lastName: "Doe",
+    email: "john.doe@example.com",
     age: 28,
-    email: "alice@example.com",
-    createdAt: "2024-02-01",
   },
   {
     id: 2,
-    name: "Bob Smith",
+    firstName: "Jane",
+    lastName: "Smith",
+    email: "jane.smith@example.com",
     age: 34,
-    email: "bob@example.com",
-    createdAt: "2023-11-15",
   },
   {
     id: 3,
-    name: "Charlie Davis",
-    age: 40,
-    email: "charlie@example.com",
-    createdAt: "2022-09-10",
+    firstName: "Alice",
+    lastName: "Johnson",
+    email: "alice.johnson@example.com",
+    age: 25,
   },
   {
     id: 4,
-    name: "David White",
-    age: 22,
-    email: "david@example.com",
-    createdAt: "2023-05-20",
-  },
-  {
-    id: 5,
-    name: "Emma Brown",
-    age: 30,
-    email: "emma@example.com",
-    createdAt: "2021-12-30",
+    firstName: "Bob",
+    lastName: "Brown",
+    email: "bob.brown@example.com",
+    age: 40,
   },
 ];
