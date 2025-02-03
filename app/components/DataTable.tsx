@@ -1,25 +1,40 @@
 "use client";
 import {
-  ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
+import { dummyData } from "../dummyData";
 import { ColumnSettings } from "./ColumnSettings";
 import { Filters } from "./Filters";
 
-interface DataTableProps<TData> {
-  columns: ColumnDef<TData>[];
-  data: TData[];
-}
+const columns = [
+  {
+    header: "First Name",
+    accessorKey: "firstName",
+  },
+  {
+    header: "Last Name",
+    accessorKey: "lastName",
+  },
+  {
+    header: "Email",
+    accessorKey: "email",
+  },
+  {
+    header: "Age",
+    accessorKey: "age",
+  },
+];
 
-const DataTable = <TData,>({ columns, data }: DataTableProps<TData>) => {
+const DataTable = () => {
   const [columnVisibility, setColumnVisibility] = useState<
     Record<string, boolean>
-  >({});
-  const table = useReactTable<TData>({
-    data,
+  >({ firstName: true, lastName: true, email: true, age: false });
+
+  const table = useReactTable({
+    data: dummyData,
     columns,
     state: { columnVisibility },
     onColumnVisibilityChange: setColumnVisibility,
