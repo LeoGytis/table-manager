@@ -109,7 +109,7 @@ const DataTable = () => {
           <p className="text-center">Loading data...</p>
         ) : (
           <table className="w-full border-collapse border border-gray-300">
-            <thead className="bg-gray-200">
+            <thead className="sticky top-0 z-10 bg-gray-200">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
