@@ -14,7 +14,7 @@ const Filters: React.FC<FiltersProps> = ({ onFilterChange }) => {
   const handleFilterChange = (field: string, value: string) => {
     const newFilters = { ...filters, [field]: value };
     setFilters(newFilters);
-    onFilterChange(newFilters); // Pass the updated filters to the parent
+    onFilterChange(newFilters);
   };
 
   return (

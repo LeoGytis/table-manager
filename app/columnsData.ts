@@ -10,7 +10,8 @@ export interface Column {
   dataType: DataType;
   description: string;
 }
-export const dummyColumns: Column[] = [
+
+export const columnsData: Column[] = [
   {
     header: "First Name",
     accessorKey: "firstName",

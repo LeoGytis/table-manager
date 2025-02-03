@@ -1,4 +1,4 @@
-import { User } from "../dummyData";
+import { User } from "../usersData";
 
 interface ColumnSettingsProps {
   columnVisibility: Record<keyof User, boolean>;

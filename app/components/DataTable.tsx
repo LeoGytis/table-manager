@@ -6,8 +6,8 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
-import { dummyColumns } from "../columnsData";
-import { dummyData } from "../dummyData";
+import { columnsData } from "../columnsData";
+import { usersData } from "../usersData";
 import { ColumnSettings } from "./ColumnSettings";
 import Filters from "./Filters";
 
@@ -31,7 +31,7 @@ const DataTable = () => {
 
   // Apply filters to data
   const filteredData = useMemo(() => {
-    return dummyData.filter((user) => {
+    return usersData.filter((user) => {
       return (
         user.firstName
           .toLowerCase()
@@ -44,7 +44,7 @@ const DataTable = () => {
 
   const table = useReactTable({
     data: filteredData,
-    columns: dummyColumns,
+    columns: columnsData,
     state: { columnVisibility },
     onColumnVisibilityChange: setColumnVisibility,
     getCoreRowModel: getCoreRowModel(),
@@ -63,7 +63,7 @@ const DataTable = () => {
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
-                  const column = dummyColumns.find(
+                  const column = columnsData.find(
                     (col) => col.accessorKey === header.id
                   );
                   return (
@@ -93,7 +93,7 @@ const DataTable = () => {
               <tr key={row.id}>
                 {row.getVisibleCells().map((cell) => {
                   // Check if the column data type is Date and format accordingly
-                  const column = dummyColumns.find(
+                  const column = columnsData.find(
                     (col) => col.accessorKey === cell.column.id
                   );
                   const cellValue = cell.getValue();
