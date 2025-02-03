@@ -6,6 +6,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { columnsData, DataType } from "../data/columnsData";
 import mockFetchUsers from "../data/mockFetchUsers";
@@ -13,6 +14,9 @@ import { ColumnSettings } from "./ColumnSettings";
 import Filters from "./Filters";
 
 const DataTable = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
   const [showColumnInfo, setShowColumnInfo] = useState<boolean>(false);
   const [columnVisibility, setColumnVisibility] = useState<
     Record<string, boolean>
@@ -27,13 +31,18 @@ const DataTable = () => {
 
   const [filters, setFilters] = useState<
     Record<string, string | number | number[]>
-  >({
-    firstName: "",
-    lastName: "",
-    email: "",
-    age: [0, 100],
-    startDate: "",
-    endDate: "",
+  >(() => {
+    const params = new URLSearchParams(searchParams.toString());
+    return {
+      firstName: params.get("firstName") || "",
+      lastName: params.get("lastName") || "",
+      email: params.get("email") || "",
+      age: params.get("age")
+        ? JSON.parse(params.get("age") as string)
+        : [0, 100],
+      startDate: params.get("startDate") || "",
+      endDate: params.get("endDate") || "",
+    };
   });
 
   const { data: users = [], isLoading } = useQuery({
@@ -49,10 +58,28 @@ const DataTable = () => {
     getCoreRowModel: getCoreRowModel(),
   });
 
+  const updateURLParams = (
+    newFilters: Record<string, string | number | number[]>
+  ) => {
+    const params = new URLSearchParams();
+
+    Object.entries(newFilters).forEach(([key, value]) => {
+      if (value !== "" && value !== undefined) {
+        params.set(
+          key,
+          typeof value === "object" ? JSON.stringify(value) : String(value)
+        );
+      }
+    });
+
+    router.replace(`?${params.toString()}`, { scroll: false });
+  };
+
   const handleFilterChange = (
     newFilters: Record<string, string | number | number[]>
   ) => {
     setFilters(newFilters);
+    updateURLParams(newFilters);
   };
 
   return (
@@ -85,7 +112,6 @@ const DataTable = () => {
                           header.column.columnDef.header,
                           header.getContext()
                         )}
-
                         {column && showColumnInfo && (
                           <div className="text-start text-sm font-light">
                             <span className="font-semibold">accessorKey:</span>{" "}
