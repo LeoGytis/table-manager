@@ -10,7 +10,7 @@ export const ColumnSettings = ({
   setColumnVisibility,
 }: ColumnSettingsProps) => {
   return (
-    <div>
+    <div className="border p-4">
       <h3>Column Settings</h3>
       {Object.keys(columnVisibility).map((columnKey) => {
         const key = columnKey as keyof User;
