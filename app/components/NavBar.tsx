@@ -1,8 +1,8 @@
-// components/NavBar.tsx
-
-import { LuSettings } from "react-icons/lu";
+import { FaRegChartBar } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
 import { ColumnSettings } from "./ColumnSettings";
 
+import { CiViewTable } from "react-icons/ci";
 interface NavBarProps {
   toggleView: "Table" | "Chart";
   setToggleView: React.Dispatch<React.SetStateAction<"Table" | "Chart">>;
@@ -37,26 +37,30 @@ const NavBar: React.FC<NavBarProps> = ({
         </div>
         <div className="flex items-center gap-4">
           <div
-            className={`cursor-pointer p-2 border rounded ${
-              toggleView === "Table" ? "bg-blue-500 text-white" : "bg-gray-200"
+            className={`cursor-pointer p-2 border border-green rounded ${
+              toggleView === "Table"
+                ? "text-green"
+                : "border-gray-500 text-gray-500"
             }`}
             onClick={() => setToggleView("Table")}
           >
-            Table View
+            <CiViewTable />
           </div>
           <div
-            className={`cursor-pointer p-2 border rounded ${
-              toggleView === "Chart" ? "bg-blue-500 text-white" : "bg-gray-200"
+            className={`cursor-pointer p-2 border border-green rounded ${
+              toggleView === "Chart"
+                ? "text-green"
+                : "border-gray-500 text-gray-500"
             }`}
             onClick={() => setToggleView("Chart")}
           >
-            Chart View
+            <FaRegChartBar />
           </div>
           <div
             onClick={() => setShowColumnSettings(!showColumnSettings)}
-            className="w-fit ml-auto text-end text-lg text-green cursor-pointer hover:shadow-green hover:shadow-md border border-green rounded p-2"
+            className="flex items-center gap-2 text-end text-lg text-green cursor-pointer hover:shadow-green hover:shadow-md border border-green rounded p-2"
           >
-            <LuSettings />
+            <IoMdSettings />
             Column Settings
           </div>
         </div>
