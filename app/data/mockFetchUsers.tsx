@@ -30,9 +30,11 @@ const mockFetchUsers = (
           (filters.endDate &&
             new Date(user.startDate) <= new Date(filters.endDate as string));
 
-        const projectCountMatch =
+        const projectsCountMatch =
           filters.projectsCount === undefined ||
-          user.projectsCount === filters.projectsCount;
+          filters.projectsCount === "" ||
+          isNaN(Number(filters.projectsCount)) ||
+          user.projectsCount === parseInt(filters.projectsCount as string, 10);
 
         return (
           firstNameMatch &&
@@ -40,7 +42,7 @@ const mockFetchUsers = (
           emailMatch &&
           ageMatch &&
           startDateMatch &&
-          projectCountMatch
+          projectsCountMatch
         );
       });
 

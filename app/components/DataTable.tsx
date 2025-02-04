@@ -34,6 +34,12 @@ const DataTable = () => {
     Record<string, string | number | number[]>
   >(() => {
     const params = new URLSearchParams(searchParams.toString());
+    const projectsCount = params.get("projectsCount");
+
+    if (projectsCount && isNaN(Number(projectsCount))) {
+      params.delete("projectsCount");
+    }
+
     return {
       firstName: params.get("firstName") || "",
       lastName: params.get("lastName") || "",
@@ -42,7 +48,10 @@ const DataTable = () => {
         ? JSON.parse(params.get("age") as string)
         : [0, 100],
       startDate: params.get("startDate") || "",
-      projectsCount: params.get("projectsCount") || "",
+      projectsCount:
+        projectsCount && !isNaN(Number(projectsCount))
+          ? Number(projectsCount)
+          : "",
     };
   });
 
@@ -73,12 +82,20 @@ const DataTable = () => {
       }
     });
 
+    if (!newFilters.projectsCount || isNaN(Number(newFilters.projectsCount))) {
+      params.delete("projectsCount");
+    }
+
     router.replace(`?${params.toString()}`, { scroll: false });
   };
 
   const handleFilterChange = (
     newFilters: Record<string, string | number | number[]>
   ) => {
+    if (newFilters.projectsCount === "") {
+      delete newFilters.projectsCount;
+    }
+
     setFilters(newFilters);
     updateURLParams(newFilters);
   };
