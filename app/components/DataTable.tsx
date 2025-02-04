@@ -7,7 +7,7 @@ import { columnsData } from "../data/columnsData";
 import mockFetchUsers from "../data/mockFetchUsers";
 import Chart from "./ChartView";
 import { ColumnSettings } from "./ColumnSettings";
-import Filters from "./FiltersSideBar";
+import FiltersSideBar from "./FiltersSideBar";
 import TableView from "./TableView";
 
 const DataTable = () => {
@@ -15,6 +15,7 @@ const DataTable = () => {
   const router = useRouter();
 
   const [showColumnSettings, setShowColumnSettings] = useState<boolean>(false);
+  const [toggleView, setToggleView] = useState<"Table" | "Chart">("Table");
   const [showColumnInfo, setShowColumnInfo] = useState<boolean>(false);
   const [columnVisibility, setColumnVisibility] = useState<
     Record<string, boolean>
@@ -99,7 +100,7 @@ const DataTable = () => {
 
   return (
     <div className="flex gap-4 my-5">
-      <Filters filters={filters} onFilterChange={handleFilterChange} />
+      <FiltersSideBar filters={filters} onFilterChange={handleFilterChange} />
       <div className="w-full flex flex-col gap-4 mb-3">
         <div className="bg-blue text-white border border-green rounded p-4">
           <div className="flex justify-between items-center text-green font-semibold ">
@@ -109,11 +110,33 @@ const DataTable = () => {
             >
               Table Manager
             </div>
-            <div
-              onClick={() => setShowColumnSettings(!showColumnSettings)}
-              className="w-fit ml-auto text-end text-lg text-green cursor-pointer hover:shadow-green hover:shadow-md border border-green rounded p-2"
-            >
-              Column Settings
+            <div className="flex items-center gap-4">
+              <div
+                className={`cursor-pointer p-2 border rounded ${
+                  toggleView === "Table"
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-200"
+                }`}
+                onClick={() => setToggleView("Table")}
+              >
+                Table View
+              </div>
+              <div
+                className={`cursor-pointer p-2 border rounded ${
+                  toggleView === "Chart"
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-200"
+                }`}
+                onClick={() => setToggleView("Chart")}
+              >
+                Chart View
+              </div>
+              <div
+                onClick={() => setShowColumnSettings(!showColumnSettings)}
+                className="w-fit ml-auto text-end text-lg text-green cursor-pointer hover:shadow-green hover:shadow-md border border-green rounded p-2"
+              >
+                Column Settings
+              </div>
             </div>
           </div>
           {showColumnSettings && (
@@ -128,18 +151,14 @@ const DataTable = () => {
 
         {isLoading ? (
           <p className="text-center">Loading data...</p>
-        ) : (
-          <Chart users={users} />
-        )}
-
-        {isLoading ? (
-          <p className="text-center">Loading data...</p>
-        ) : (
+        ) : toggleView === "Table" ? (
           <TableView
             table={table}
             showColumnInfo={showColumnInfo}
             columnsData={columnsData}
           />
+        ) : (
+          <Chart users={users} />
         )}
       </div>
     </div>
