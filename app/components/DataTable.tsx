@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { columnsData } from "../data/columnsData";
 import mockFetchUsers from "../data/mockFetchUsers";
+import Chart from "./ChartView";
 import { ColumnSettings } from "./ColumnSettings";
 import Filters from "./FiltersSideBar";
 import TableView from "./TableView";
@@ -124,6 +125,12 @@ const DataTable = () => {
             />
           )}
         </div>
+
+        {isLoading ? (
+          <p className="text-center">Loading data...</p>
+        ) : (
+          <Chart users={users} />
+        )}
 
         {isLoading ? (
           <p className="text-center">Loading data...</p>
