@@ -39,7 +39,7 @@ export const ColumnSettings = ({
                 className="peer checked:accent-green"
               />
               {column && (
-                <div>
+                <div className="text-gray-400 peer-checked:text-white">
                   <span>
                     <strong>Name:</strong> {column.header} <br />
                     <strong>Accessor Key:</strong> {column.accessorKey} <br />
@@ -57,7 +57,7 @@ export const ColumnSettings = ({
           type="checkbox"
           checked={showColumnInfo}
           onChange={(e) => setShowColumnInfo(e.target.checked)}
-          className="peer checked:accent-green"
+          className="checked:accent-green"
         />
         <span>Show detailed column information</span>
       </div>

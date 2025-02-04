@@ -18,7 +18,6 @@ const DataTable = () => {
   const router = useRouter();
 
   const [showColumnSettings, setShowColumnSettings] = useState<boolean>(false);
-
   const [showColumnInfo, setShowColumnInfo] = useState<boolean>(false);
   const [columnVisibility, setColumnVisibility] = useState<
     Record<string, boolean>
