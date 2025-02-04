@@ -27,7 +27,7 @@ const DataTable = () => {
     email: true,
     age: true,
     startDate: true,
-    endDate: true,
+    projectsCount: true,
   });
 
   const [filters, setFilters] = useState<
@@ -42,7 +42,7 @@ const DataTable = () => {
         ? JSON.parse(params.get("age") as string)
         : [0, 100],
       startDate: params.get("startDate") || "",
-      endDate: params.get("endDate") || "",
+      projectsCount: params.get("projectsCount") || "",
     };
   });
 
