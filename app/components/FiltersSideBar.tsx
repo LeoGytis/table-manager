@@ -1,11 +1,11 @@
 import React from "react";
 
-interface FiltersProps {
+interface FiltersSideBarProps {
   filters: Record<string, string | number | number[]>;
   onFilterChange: (filters: Record<string, string | number | number[]>) => void;
 }
 
-const Filters = ({ filters, onFilterChange }: FiltersProps) => {
+const FiltersSideBar = ({ filters, onFilterChange }: FiltersSideBarProps) => {
   const handleNumberChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     field: string
@@ -127,4 +127,4 @@ const Filters = ({ filters, onFilterChange }: FiltersProps) => {
   );
 };
 
-export default Filters;
+export default FiltersSideBar;

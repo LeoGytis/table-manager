@@ -11,7 +11,7 @@ import { useState } from "react";
 import { columnsData, DataType } from "../data/columnsData";
 import mockFetchUsers from "../data/mockFetchUsers";
 import { ColumnSettings } from "./ColumnSettings";
-import Filters from "./Filters";
+import Filters from "./FiltersSideBar";
 
 const DataTable = () => {
   const searchParams = useSearchParams();

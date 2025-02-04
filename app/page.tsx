@@ -2,6 +2,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import Chart from "./components/Chart";
+import DataTable from "./components/DataTable";
 import "./globals.css";
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="mx-8">
-        {/* <DataTable /> */}
+        <DataTable />
         <Chart />
       </div>
     </QueryClientProvider>
