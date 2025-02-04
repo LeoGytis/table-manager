@@ -106,7 +106,12 @@ const DataTable = () => {
       <div className="w-full flex flex-col gap-4 mb-3">
         <div className="bg-blue text-white border border-green rounded p-4">
           <div className="flex justify-between items-center text-green font-semibold ">
-            <div className="text-2xl">Table Manager</div>
+            <div
+              onClick={() => (window.location.href = "/")}
+              className="text-2xl cursor-pointer"
+            >
+              Table Manager
+            </div>
             <div
               onClick={() => setShowColumnSettings(!showColumnSettings)}
               className="w-fit ml-auto text-end text-lg text-green cursor-pointer hover:shadow-green hover:shadow-md border border-green rounded p-2"
