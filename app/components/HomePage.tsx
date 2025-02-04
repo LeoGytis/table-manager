@@ -8,7 +8,7 @@ import FiltersSideBar from "./FiltersSideBar";
 import NavBar from "./NavBar";
 import TableView from "./TableView";
 
-const DataTable = () => {
+const HomePage = () => {
   const {
     toggleView,
     setToggleView,
@@ -35,7 +35,7 @@ const DataTable = () => {
   return (
     <div className="flex gap-4 my-5">
       <FiltersSideBar filters={filters} onFilterChange={handleFilterChange} />
-      <div className="w-full flex flex-col gap-4 mb-3">
+      <div className="w-full flex flex-col gap-4">
         <NavBar
           toggleView={toggleView}
           setToggleView={setToggleView}
@@ -62,4 +62,4 @@ const DataTable = () => {
   );
 };
 
-export default DataTable;
+export default HomePage;

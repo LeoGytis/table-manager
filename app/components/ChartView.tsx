@@ -13,11 +13,8 @@ interface ChartViewProps {
 
 const ChartView = ({ users }: ChartViewProps) => {
   return (
-    <ResponsiveContainer width="100%" height={500}>
-      <BarChart
-        data={users}
-        margin={{ top: 20, right: 20, left: 20, bottom: 5 }}
-      >
+    <ResponsiveContainer width="100%" height={500} className="mt-36">
+      <BarChart data={users} margin={{ top: 20, right: 20, left: 20 }}>
         <XAxis dataKey="age" />
         <YAxis />
         <Tooltip />
