@@ -1,20 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Quicksand } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const font = Quicksand({
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "Table Manager",
-  description: "Table Manager",
+  description: "Table Manager to manage the users data",
 };
 
 export default function RootLayout({
@@ -24,11 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased mx-6`}
-      >
-        {children}
-      </body>
+      <body className={`${font.className} mx-6`}>{children}</body>
     </html>
   );
 }
