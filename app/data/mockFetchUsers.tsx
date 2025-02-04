@@ -22,19 +22,20 @@ const mockFetchUsers = (
           user.age <= (filters.age as number[])[1];
 
         const startDateMatch =
-          !filters.startDate ||
-          new Date(user.startDate) >= new Date(filters.startDate as string);
-        const endDateMatch =
-          !filters.endDate ||
-          new Date(user.endDate) <= new Date(filters.endDate as string);
+          (!filters.startDate && !filters.endDate) ||
+          (new Date(user.startDate) >= new Date(filters.startDate as string) &&
+            (!filters.endDate ||
+              new Date(user.startDate) <=
+                new Date(filters.endDate as string))) ||
+          (filters.endDate &&
+            new Date(user.startDate) <= new Date(filters.endDate as string));
 
         return (
           firstNameMatch &&
           lastNameMatch &&
           emailMatch &&
           ageMatch &&
-          startDateMatch &&
-          endDateMatch
+          startDateMatch
         );
       });
 

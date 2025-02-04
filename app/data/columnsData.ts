@@ -43,9 +43,9 @@ export const columnsData: Column[] = [
     description: "Work starting date.",
   },
   {
-    header: "End Date",
-    accessorKey: "endDate",
-    dataType: DataType.DATE,
-    description: "Work ending date.",
+    header: "Project count",
+    accessorKey: "projectsCount",
+    dataType: DataType.NUMBER,
+    description: "Completed projects so far",
   },
 ];

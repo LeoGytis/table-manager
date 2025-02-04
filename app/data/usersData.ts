@@ -5,7 +5,6 @@ export interface UserProps {
   email: string;
   age: number;
   startDate: Date;
-  endDate: Date;
 }
 
 export const usersData: UserProps[] = [
@@ -16,7 +15,6 @@ export const usersData: UserProps[] = [
     email: "john.doe@example.com",
     age: 28,
     startDate: new Date("2020-01-01"),
-    endDate: new Date("2023-01-01"),
   },
   {
     id: 2,
@@ -25,7 +23,6 @@ export const usersData: UserProps[] = [
     email: "jane.smith@example.com",
     age: 34,
     startDate: new Date("2018-05-15"),
-    endDate: new Date("2022-12-30"),
   },
   {
     id: 3,
@@ -34,7 +31,6 @@ export const usersData: UserProps[] = [
     email: "alice.johnson@example.com",
     age: 25,
     startDate: new Date("2021-09-23"),
-    endDate: new Date("2024-09-23"),
   },
   {
     id: 4,
@@ -43,7 +39,6 @@ export const usersData: UserProps[] = [
     email: "bob.brown@example.com",
     age: 40,
     startDate: new Date("2015-06-10"),
-    endDate: new Date("2023-11-20"),
   },
   {
     id: 5,
@@ -52,7 +47,6 @@ export const usersData: UserProps[] = [
     email: "charlie.davis@example.com",
     age: 30,
     startDate: new Date("2019-03-11"),
-    endDate: new Date("2024-06-05"),
   },
   {
     id: 6,
@@ -61,7 +55,6 @@ export const usersData: UserProps[] = [
     email: "david.martinez@example.com",
     age: 37,
     startDate: new Date("2017-01-25"),
-    endDate: new Date("2021-10-11"),
   },
   {
     id: 7,
@@ -70,7 +63,6 @@ export const usersData: UserProps[] = [
     email: "eva.lopez@example.com",
     age: 22,
     startDate: new Date("2020-07-14"),
-    endDate: new Date("2025-03-18"),
   },
   {
     id: 8,
@@ -79,7 +71,6 @@ export const usersData: UserProps[] = [
     email: "frank.gonzalez@example.com",
     age: 45,
     startDate: new Date("2014-08-01"),
-    endDate: new Date("2023-05-16"),
   },
   {
     id: 9,
@@ -88,7 +79,6 @@ export const usersData: UserProps[] = [
     email: "grace.harris@example.com",
     age: 31,
     startDate: new Date("2016-02-20"),
-    endDate: new Date("2021-08-30"),
   },
   {
     id: 10,
@@ -97,7 +87,6 @@ export const usersData: UserProps[] = [
     email: "henry.clark@example.com",
     age: 29,
     startDate: new Date("2018-09-10"),
-    endDate: new Date("2022-12-25"),
   },
   {
     id: 11,
@@ -106,7 +95,6 @@ export const usersData: UserProps[] = [
     email: "ivy.allen@example.com",
     age: 26,
     startDate: new Date("2021-05-06"),
-    endDate: new Date("2024-01-15"),
   },
   {
     id: 12,
@@ -115,7 +103,6 @@ export const usersData: UserProps[] = [
     email: "jack.young@example.com",
     age: 35,
     startDate: new Date("2016-10-22"),
-    endDate: new Date("2020-12-30"),
   },
   {
     id: 13,
@@ -124,7 +111,6 @@ export const usersData: UserProps[] = [
     email: "kathy.king@example.com",
     age: 41,
     startDate: new Date("2013-11-18"),
-    endDate: new Date("2024-08-08"),
   },
   {
     id: 14,
@@ -133,7 +119,6 @@ export const usersData: UserProps[] = [
     email: "leo.wright@example.com",
     age: 33,
     startDate: new Date("2015-12-03"),
-    endDate: new Date("2023-02-18"),
   },
   {
     id: 15,
@@ -142,7 +127,6 @@ export const usersData: UserProps[] = [
     email: "mia.scott@example.com",
     age: 27,
     startDate: new Date("2019-04-17"),
-    endDate: new Date("2022-11-22"),
   },
   {
     id: 16,
@@ -151,7 +135,6 @@ export const usersData: UserProps[] = [
     email: "nick.adams@example.com",
     age: 38,
     startDate: new Date("2014-05-05"),
-    endDate: new Date("2023-10-10"),
   },
   {
     id: 17,
@@ -160,7 +143,6 @@ export const usersData: UserProps[] = [
     email: "olivia.baker@example.com",
     age: 32,
     startDate: new Date("2017-07-09"),
-    endDate: new Date("2024-02-27"),
   },
   {
     id: 18,
@@ -169,7 +151,6 @@ export const usersData: UserProps[] = [
     email: "paul.carter@example.com",
     age: 44,
     startDate: new Date("2012-09-14"),
-    endDate: new Date("2023-01-19"),
   },
   {
     id: 19,
@@ -178,7 +159,6 @@ export const usersData: UserProps[] = [
     email: "quincy.evans@example.com",
     age: 39,
     startDate: new Date("2016-01-29"),
-    endDate: new Date("2022-03-04"),
   },
   {
     id: 20,
@@ -187,7 +167,6 @@ export const usersData: UserProps[] = [
     email: "rachel.green@example.com",
     age: 29,
     startDate: new Date("2018-06-11"),
-    endDate: new Date("2022-12-17"),
   },
   {
     id: 21,
@@ -196,7 +175,6 @@ export const usersData: UserProps[] = [
     email: "sam.martinez@example.com",
     age: 25,
     startDate: new Date("2021-04-20"),
-    endDate: new Date("2025-09-03"),
   },
   {
     id: 22,
@@ -205,7 +183,6 @@ export const usersData: UserProps[] = [
     email: "tina.roberts@example.com",
     age: 30,
     startDate: new Date("2018-02-02"),
-    endDate: new Date("2023-08-15"),
   },
   {
     id: 23,
@@ -214,7 +191,6 @@ export const usersData: UserProps[] = [
     email: "ursula.hughes@example.com",
     age: 36,
     startDate: new Date("2017-10-12"),
-    endDate: new Date("2022-12-01"),
   },
   {
     id: 24,
@@ -223,7 +199,6 @@ export const usersData: UserProps[] = [
     email: "victor.king@example.com",
     age: 42,
     startDate: new Date("2015-01-28"),
-    endDate: new Date("2023-11-25"),
   },
   {
     id: 25,
@@ -232,7 +207,6 @@ export const usersData: UserProps[] = [
     email: "wendy.lopez@example.com",
     age: 33,
     startDate: new Date("2016-06-17"),
-    endDate: new Date("2021-09-09"),
   },
   {
     id: 26,
@@ -241,7 +215,6 @@ export const usersData: UserProps[] = [
     email: "xander.morris@example.com",
     age: 28,
     startDate: new Date("2019-10-05"),
-    endDate: new Date("2024-07-18"),
   },
   {
     id: 27,
@@ -250,7 +223,6 @@ export const usersData: UserProps[] = [
     email: "yara.nelson@example.com",
     age: 31,
     startDate: new Date("2017-02-11"),
-    endDate: new Date("2022-05-23"),
   },
   {
     id: 28,
@@ -259,7 +231,6 @@ export const usersData: UserProps[] = [
     email: "zachary.perez@example.com",
     age: 38,
     startDate: new Date("2014-09-07"),
-    endDate: new Date("2023-07-30"),
   },
   {
     id: 29,
@@ -268,7 +239,6 @@ export const usersData: UserProps[] = [
     email: "aaron.roberts@example.com",
     age: 28,
     startDate: new Date("2020-01-30"),
-    endDate: new Date("2023-12-12"),
   },
   {
     id: 30,
@@ -277,6 +247,5 @@ export const usersData: UserProps[] = [
     email: "beth.walker@example.com",
     age: 30,
     startDate: new Date("2020-06-25"),
-    endDate: new Date("2025-06-25"),
   },
 ];
