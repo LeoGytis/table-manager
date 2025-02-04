@@ -18,10 +18,10 @@ Loading State: Handles data fetching with loading indicators.
 
 ## Tech Stack
 
-Next.js
-React
-React Query
-React Table
-ReCharts
-Tailwind CSS
-React Icons
+- Next.js
+- React
+- React Query
+- React Table
+- ReCharts
+- Tailwind CSS
+- React Icons
