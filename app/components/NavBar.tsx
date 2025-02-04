@@ -2,6 +2,7 @@ import { FaRegChartBar } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { ColumnSettings } from "./ColumnSettings";
 
+import Image from "next/image";
 import { CiViewTable } from "react-icons/ci";
 interface NavBarProps {
   toggleView: "Table" | "Chart";
@@ -31,8 +32,11 @@ const NavBar: React.FC<NavBarProps> = ({
       <div className="flex justify-between items-center text-green font-semibold">
         <div
           onClick={() => (window.location.href = "/")}
-          className="text-2xl cursor-pointer"
+          className="flex items-center gap-3 text-2xl cursor-pointer"
         >
+          <div className="relative w-6 h-6">
+            <Image src="/logo.png" alt="logo" fill objectFit="cover" />
+          </div>
           Table Manager
         </div>
         <div className="flex items-center gap-4">

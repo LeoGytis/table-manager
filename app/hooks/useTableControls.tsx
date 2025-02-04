@@ -1,7 +1,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
 
-const useDataTable = () => {
+const useTableControls = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -78,4 +78,4 @@ const useDataTable = () => {
   };
 };
 
-export default useDataTable;
+export default useTableControls;

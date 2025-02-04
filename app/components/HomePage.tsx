@@ -1,7 +1,7 @@
 "use client";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { columnsData } from "../data/columnsData";
-import useDataTable from "../hooks/useDataTable";
+import useTableControls from "../hooks/useTableControls";
 import useUsers from "../hooks/useUsers";
 import Chart from "./ChartView";
 import FiltersSideBar from "./FiltersSideBar";
@@ -20,7 +20,7 @@ const HomePage = () => {
     setColumnVisibility,
     filters,
     handleFilterChange,
-  } = useDataTable();
+  } = useTableControls();
 
   const { data: users = [], isLoading } = useUsers(filters);
 
