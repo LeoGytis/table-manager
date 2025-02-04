@@ -5,6 +5,7 @@ export interface UserProps {
   email: string;
   age: number;
   startDate: Date;
+  projectsCount: number;
 }
 
 export const usersData: UserProps[] = [
@@ -15,6 +16,7 @@ export const usersData: UserProps[] = [
     email: "john.doe@example.com",
     age: 28,
     startDate: new Date("2020-01-01"),
+    projectsCount: 6,
   },
   {
     id: 2,
@@ -23,6 +25,7 @@ export const usersData: UserProps[] = [
     email: "jane.smith@example.com",
     age: 34,
     startDate: new Date("2018-05-15"),
+    projectsCount: 8,
   },
   {
     id: 3,
@@ -31,6 +34,7 @@ export const usersData: UserProps[] = [
     email: "alice.johnson@example.com",
     age: 25,
     startDate: new Date("2021-09-23"),
+    projectsCount: 4,
   },
   {
     id: 4,
@@ -39,6 +43,7 @@ export const usersData: UserProps[] = [
     email: "bob.brown@example.com",
     age: 40,
     startDate: new Date("2015-06-10"),
+    projectsCount: 10,
   },
   {
     id: 5,
@@ -47,6 +52,7 @@ export const usersData: UserProps[] = [
     email: "charlie.davis@example.com",
     age: 30,
     startDate: new Date("2019-03-11"),
+    projectsCount: 7,
   },
   {
     id: 6,
@@ -55,6 +61,7 @@ export const usersData: UserProps[] = [
     email: "david.martinez@example.com",
     age: 37,
     startDate: new Date("2017-01-25"),
+    projectsCount: 9,
   },
   {
     id: 7,
@@ -63,6 +70,7 @@ export const usersData: UserProps[] = [
     email: "eva.lopez@example.com",
     age: 22,
     startDate: new Date("2020-07-14"),
+    projectsCount: 5,
   },
   {
     id: 8,
@@ -71,6 +79,7 @@ export const usersData: UserProps[] = [
     email: "frank.gonzalez@example.com",
     age: 45,
     startDate: new Date("2014-08-01"),
+    projectsCount: 12,
   },
   {
     id: 9,
@@ -79,6 +88,7 @@ export const usersData: UserProps[] = [
     email: "grace.harris@example.com",
     age: 31,
     startDate: new Date("2016-02-20"),
+    projectsCount: 8,
   },
   {
     id: 10,
@@ -87,6 +97,7 @@ export const usersData: UserProps[] = [
     email: "henry.clark@example.com",
     age: 29,
     startDate: new Date("2018-09-10"),
+    projectsCount: 6,
   },
   {
     id: 11,
@@ -95,6 +106,7 @@ export const usersData: UserProps[] = [
     email: "ivy.allen@example.com",
     age: 26,
     startDate: new Date("2021-05-06"),
+    projectsCount: 4,
   },
   {
     id: 12,
@@ -103,6 +115,7 @@ export const usersData: UserProps[] = [
     email: "jack.young@example.com",
     age: 35,
     startDate: new Date("2016-10-22"),
+    projectsCount: 9,
   },
   {
     id: 13,
@@ -111,6 +124,7 @@ export const usersData: UserProps[] = [
     email: "kathy.king@example.com",
     age: 41,
     startDate: new Date("2013-11-18"),
+    projectsCount: 11,
   },
   {
     id: 14,
@@ -119,6 +133,7 @@ export const usersData: UserProps[] = [
     email: "leo.wright@example.com",
     age: 33,
     startDate: new Date("2015-12-03"),
+    projectsCount: 10,
   },
   {
     id: 15,
@@ -127,6 +142,7 @@ export const usersData: UserProps[] = [
     email: "mia.scott@example.com",
     age: 27,
     startDate: new Date("2019-04-17"),
+    projectsCount: 5,
   },
   {
     id: 16,
@@ -135,6 +151,7 @@ export const usersData: UserProps[] = [
     email: "nick.adams@example.com",
     age: 38,
     startDate: new Date("2014-05-05"),
+    projectsCount: 12,
   },
   {
     id: 17,
@@ -143,6 +160,7 @@ export const usersData: UserProps[] = [
     email: "olivia.baker@example.com",
     age: 32,
     startDate: new Date("2017-07-09"),
+    projectsCount: 8,
   },
   {
     id: 18,
@@ -151,6 +169,7 @@ export const usersData: UserProps[] = [
     email: "paul.carter@example.com",
     age: 44,
     startDate: new Date("2012-09-14"),
+    projectsCount: 14,
   },
   {
     id: 19,
@@ -159,6 +178,7 @@ export const usersData: UserProps[] = [
     email: "quincy.evans@example.com",
     age: 39,
     startDate: new Date("2016-01-29"),
+    projectsCount: 10,
   },
   {
     id: 20,
@@ -167,6 +187,7 @@ export const usersData: UserProps[] = [
     email: "rachel.green@example.com",
     age: 29,
     startDate: new Date("2018-06-11"),
+    projectsCount: 7,
   },
   {
     id: 21,
@@ -175,6 +196,7 @@ export const usersData: UserProps[] = [
     email: "sam.martinez@example.com",
     age: 25,
     startDate: new Date("2021-04-20"),
+    projectsCount: 4,
   },
   {
     id: 22,
@@ -183,6 +205,7 @@ export const usersData: UserProps[] = [
     email: "tina.roberts@example.com",
     age: 30,
     startDate: new Date("2018-02-02"),
+    projectsCount: 6,
   },
   {
     id: 23,
@@ -191,6 +214,7 @@ export const usersData: UserProps[] = [
     email: "ursula.hughes@example.com",
     age: 36,
     startDate: new Date("2017-10-12"),
+    projectsCount: 9,
   },
   {
     id: 24,
@@ -199,6 +223,7 @@ export const usersData: UserProps[] = [
     email: "victor.king@example.com",
     age: 42,
     startDate: new Date("2015-01-28"),
+    projectsCount: 12,
   },
   {
     id: 25,
@@ -207,6 +232,7 @@ export const usersData: UserProps[] = [
     email: "wendy.lopez@example.com",
     age: 33,
     startDate: new Date("2016-06-17"),
+    projectsCount: 8,
   },
   {
     id: 26,
@@ -215,6 +241,7 @@ export const usersData: UserProps[] = [
     email: "xander.morris@example.com",
     age: 28,
     startDate: new Date("2019-10-05"),
+    projectsCount: 6,
   },
   {
     id: 27,
@@ -223,6 +250,7 @@ export const usersData: UserProps[] = [
     email: "yara.nelson@example.com",
     age: 31,
     startDate: new Date("2017-02-11"),
+    projectsCount: 8,
   },
   {
     id: 28,
@@ -231,6 +259,7 @@ export const usersData: UserProps[] = [
     email: "zachary.perez@example.com",
     age: 38,
     startDate: new Date("2014-09-07"),
+    projectsCount: 12,
   },
   {
     id: 29,
@@ -239,6 +268,7 @@ export const usersData: UserProps[] = [
     email: "aaron.roberts@example.com",
     age: 28,
     startDate: new Date("2020-01-30"),
+    projectsCount: 4,
   },
   {
     id: 30,
@@ -247,5 +277,6 @@ export const usersData: UserProps[] = [
     email: "beth.walker@example.com",
     age: 30,
     startDate: new Date("2020-06-25"),
+    projectsCount: 6,
   },
 ];
