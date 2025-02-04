@@ -15,7 +15,6 @@ import TableView from "./TableView";
 const DataTable = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-
   const [showColumnSettings, setShowColumnSettings] = useState<boolean>(false);
   const [toggleView, setToggleView] = useState<"Table" | "Chart">("Table");
   const [showColumnInfo, setShowColumnInfo] = useState<boolean>(false);
@@ -103,7 +102,7 @@ const DataTable = () => {
   return (
     <div className="flex gap-4 my-5">
       <FiltersSideBar filters={filters} onFilterChange={handleFilterChange} />
-      <div className="w-full flex flex-col gap-4 mb-3">
+      <div className="w-full flex flex-col justify-between gap-4 mb-3">
         <NavBar
           toggleView={toggleView}
           setToggleView={setToggleView}
