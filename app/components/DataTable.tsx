@@ -1,17 +1,13 @@
 "use client";
-import { formatDate } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
-import {
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { columnsData, DataType } from "../data/columnsData";
+import { columnsData } from "../data/columnsData";
 import mockFetchUsers from "../data/mockFetchUsers";
 import { ColumnSettings } from "./ColumnSettings";
 import Filters from "./FiltersSideBar";
+import TableView from "./TableView";
 
 const DataTable = () => {
   const searchParams = useSearchParams();
@@ -132,72 +128,11 @@ const DataTable = () => {
         {isLoading ? (
           <p className="text-center">Loading data...</p>
         ) : (
-          <table className="w-full border-collapse border border-gray-300">
-            <thead className="sticky top-0 z-10 bg-gray-200">
-              {table.getHeaderGroups().map((headerGroup) => (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => {
-                    const column = columnsData.find(
-                      (col) => col.accessorKey === header.column.id
-                    );
-                    return (
-                      <th
-                        key={header.id}
-                        className="p-2 border border-gray-300"
-                      >
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                        {column && showColumnInfo && (
-                          <div className="text-start text-sm font-light">
-                            <span className="font-semibold">accessorKey:</span>{" "}
-                            {column.accessorKey} <br />
-                            <span className="font-semibold">
-                              Column Type:
-                            </span>{" "}
-                            {column.dataType} <br />
-                            <span className="font-semibold">
-                              Description:
-                            </span>{" "}
-                            {column.description}
-                          </div>
-                        )}
-                      </th>
-                    );
-                  })}
-                </tr>
-              ))}
-            </thead>
-
-            <tbody>
-              {table.getRowModel().rows.map((row) => (
-                <tr key={row.id}>
-                  {row.getVisibleCells().map((cell) => {
-                    const column = columnsData.find(
-                      (col) => col.accessorKey === cell.column.id
-                    );
-                    const cellValue = cell.getValue();
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    let formattedCellValue: any = cellValue;
-
-                    if (
-                      column?.dataType === DataType.DATE &&
-                      cellValue instanceof Date
-                    ) {
-                      formattedCellValue = formatDate(cellValue);
-                    }
-
-                    return (
-                      <td key={cell.id} className="p-2 border border-gray-300">
-                        {flexRender(formattedCellValue, cell.getContext())}
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <TableView
+            table={table}
+            showColumnInfo={showColumnInfo}
+            columnsData={columnsData}
+          />
         )}
       </div>
     </div>
