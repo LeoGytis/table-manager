@@ -35,7 +35,7 @@ const Filters = ({ filters, onFilterChange }: FiltersProps) => {
 
   return (
     <div className="w-1/5 flex flex-col gap-6 bg-blue text-white border border-green rounded p-4">
-      <h3 className="text-xl font-semibold">Fitler by:</h3>
+      <h3 className="text-xl text-green font-semibold">Fitler by:</h3>
 
       <div>
         <label>First Name:</label>
