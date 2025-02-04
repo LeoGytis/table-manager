@@ -21,9 +21,7 @@ export const ColumnSettings = ({
       <div className="grid grid-cols-3 gap-4">
         {Object.keys(columnVisibility).map((columnKey) => {
           const key = columnKey as keyof UserProps;
-          console.log("🔥 :: key ::", key);
           const column = columnsData.find((col) => col.accessorKey === key);
-          console.log("🔥 :: column ::", column);
           return (
             <div
               key={key}

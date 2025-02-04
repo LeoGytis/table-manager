@@ -30,12 +30,17 @@ const mockFetchUsers = (
           (filters.endDate &&
             new Date(user.startDate) <= new Date(filters.endDate as string));
 
+        const projectCountMatch =
+          filters.projectsCount === undefined ||
+          user.projectsCount === filters.projectsCount;
+
         return (
           firstNameMatch &&
           lastNameMatch &&
           emailMatch &&
           ageMatch &&
-          startDateMatch
+          startDateMatch &&
+          projectCountMatch
         );
       });
 

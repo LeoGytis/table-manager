@@ -6,6 +6,15 @@ interface FiltersProps {
 }
 
 const Filters = ({ filters, onFilterChange }: FiltersProps) => {
+  const handleNumberChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: string
+  ) => {
+    const value = parseInt(e.target.value, 10);
+    const newFilters = { ...filters, [field]: value };
+    onFilterChange(newFilters);
+  };
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     field: string
@@ -35,7 +44,7 @@ const Filters = ({ filters, onFilterChange }: FiltersProps) => {
 
   return (
     <div className="w-1/5 flex flex-col gap-6 bg-blue text-white border border-green rounded p-4">
-      <h3 className="text-xl text-green font-semibold">Fitler by:</h3>
+      <h3 className="text-xl text-green font-semibold">Filter by:</h3>
 
       <div>
         <label>First Name:</label>
@@ -85,7 +94,6 @@ const Filters = ({ filters, onFilterChange }: FiltersProps) => {
         </div>
       </div>
 
-      {/* Start Date Filter */}
       <div>
         <label>Start Date:</label>
         <input
@@ -96,13 +104,22 @@ const Filters = ({ filters, onFilterChange }: FiltersProps) => {
         />
       </div>
 
-      {/* End Date Filter */}
       <div>
         <label>End Date:</label>
         <input
           type="date"
           value={filters.endDate as string}
           onChange={(e) => handleDateChange(e, "endDate")}
+          className="mt-1 p-2 w-full border rounded"
+        />
+      </div>
+
+      <div>
+        <label>Projects count:</label>
+        <input
+          type="number"
+          value={(filters.projectsCount as number) || ""}
+          onChange={(e) => handleNumberChange(e, "projectsCount")}
           className="mt-1 p-2 w-full border rounded"
         />
       </div>
